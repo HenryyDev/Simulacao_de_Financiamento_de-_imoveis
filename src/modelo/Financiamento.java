@@ -1,7 +1,34 @@
+package modelo;
+
 public class Financiamento {
-    double valorImovel;
-    int prazoFinanciamento;
-    double taxaJurosAnual;
+    private double valorImovel;
+    private int prazoFinanciamento;
+
+    public int getPrazoFinanciamento() {
+        return prazoFinanciamento;
+    }
+
+    public void setPrazoFinanciamento(int prazoFinanciamento) {
+        this.prazoFinanciamento = prazoFinanciamento;
+    }
+
+    public double getTaxaJurosAnual() {
+        return taxaJurosAnual;
+    }
+
+    public void setTaxaJurosAnual(double taxaJurosAnual) {
+        this.taxaJurosAnual = taxaJurosAnual;
+    }
+
+    public double getValorImovel() {
+        return valorImovel;
+    }
+
+    public void setValorImovel(double valorImovel) {
+        this.valorImovel = valorImovel;
+    }
+
+    private double taxaJurosAnual;
 
     //construtor
     public Financiamento(double valorImovel, int prazoFinanciamento, double taxaJurosAnual){
