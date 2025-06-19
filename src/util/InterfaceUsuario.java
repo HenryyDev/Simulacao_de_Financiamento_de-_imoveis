@@ -46,15 +46,15 @@ public class InterfaceUsuario {
 
     public double taxaJurosAnual() {
         double taxaJuros = -1;
-        while (taxaJuros <= 0 || taxaJuros <= 0 || taxaJuros>30) {
-            System.out.println("Digite a taxa de juros: ");
+        while (taxaJuros <= 0  || taxaJuros>30) {
+            System.out.println("Digite a taxa de juros anual (ex: 1 para 1%): ");
             if (scan.hasNextDouble()) {
                 taxaJuros = scan.nextDouble();
                 if (taxaJuros <= 0 || taxaJuros>30) {
                     System.out.println("A taxa de juros deve ser maior que 0% e não pode ser maior que 30%, tente novamente");
                 }
             } else {
-                System.out.println("Entrada inválida! digite um prazo válido!");
+                System.out.println("Entrada inválida! digite uma taxa de juros válida!");
                 scan.next();
             }
         }
