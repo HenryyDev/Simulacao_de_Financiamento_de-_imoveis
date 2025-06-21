@@ -1,48 +1,52 @@
 package util;
 
 import  java.util.Scanner;
-public class InterfaceUsuario {
+public abstract class InterfaceUsuario {
     Scanner scan = new Scanner(System.in);
 
-    public double valorImovel() {
+    private double lerDoublePositivo(String mensagem, double min, double max) {
         double valor = -1;
-        while (valor <= 0 || valor < 10_000.00 || valor > 10_000_000.00) {
-            System.out.println("Digite o valor do imóvel:");
+        while (valor < min || valor > max) {
+            System.out.println(mensagem);
             if (scan.hasNextDouble()) {
                 valor = scan.nextDouble();
-                if (valor < 10_000.00) {
-                    System.out.println("Valor do imóvel menor que o limite minimo (R$ 10.000,00) tente novamente");
-                    valor = -1;
+                if (valor < min || valor > max) {
+                    System.out.printf("Valor inválido. Deve estar entre %.2f e %.2f.%n", min, max);
                 }
-                else if (valor>10_000_000.00) {
-                    System.out.println("Valor do imóvel ultrapassa o limite permitido (R$ 10.000.000,00) tente novamente.");
-                    valor = -1;}
             } else {
-                System.out.println("Entrada inválida! Digite um número válido");
+                System.out.println("Entrada inválida! Digite um número válido.");
                 scan.next();
             }
         }
-
+        return valor;
+    }
+    private int lerIntEntre(String mensagem, int min, int max) {
+        int valor = -1;
+        while (valor < min || valor > max) {
+            System.out.println(mensagem);
+            if (scan.hasNextInt()) {
+                valor = scan.nextInt();
+                if (valor < min || valor > max) {
+                    System.out.printf("Valor inválido. Deve estar entre %d e %d.%n", min, max);
+                }
+            } else {
+                System.out.println("Entrada inválida! Digite um número válido.");
+                scan.next();
+            }
+        }
         return valor;
     }
 
-    public int prazoFinanciamento() {
-        int prazo = -1;
-        while (prazo <= 0 || prazo <5 || prazo>35) {
-            System.out.println("Digite o prazo do financiamento em anos (entre 5 e 35): ");
-            if (scan.hasNextInt()) {
-                prazo = scan.nextInt();
-                if (prazo <5 || prazo>35) {
-                    System.out.println("O prazo deve estar entre 5 e 35 anos. Tente novamente.");
-                }
-            } else {
-                System.out.println("Entrada inválida! digite um prazo válido!");
-                scan.next();
-            }
-        }
 
-        return prazo;
+    public double valorImovel() {
+        return lerDoublePositivo("Digite o valor do imóvel (10.000 a 10.000.000): ", 10_000, 10_000_000);
     }
+
+
+    public int prazoFinanciamento() {
+        return lerIntEntre("Digite o prazo do financiamento em anos (5 a 35): ", 5, 35);
+    }
+
 
     public double taxaJurosAnual() {
         double taxaJuros = -1;
@@ -60,4 +64,9 @@ public class InterfaceUsuario {
         }
         return taxaJuros;
     }
+    public double areaConstruida() { throw new UnsupportedOperationException(); }
+    public double areaTerreno() { throw new UnsupportedOperationException(); }
+    public int numeroAndar() { throw new UnsupportedOperationException(); }
+    public int numeroVagas() { throw new UnsupportedOperationException(); }
+    public String zonaTerreno() { throw new UnsupportedOperationException(); }
 }

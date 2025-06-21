@@ -1,9 +1,12 @@
 package modelo;
 
 public class Apartamento extends Financiamento{
-
-    public Apartamento(double valorFinanciamento,int prazoFinanciamento,int taxaJurosAnual){
+    private int vagasGaragem;
+    private int numAndar;
+    public Apartamento(double valorFinanciamento,int prazoFinanciamento,double taxaJurosAnual,int vagasGaragem,int numAndar){
         super(valorFinanciamento,prazoFinanciamento,taxaJurosAnual);
+        this.vagasGaragem=vagasGaragem;
+        this.numAndar=numAndar;
     }
     public double getTaxaMensal() {
         return (getTaxaJurosAnual() /100)/ 12;
@@ -19,5 +22,10 @@ public class Apartamento extends Financiamento{
         double numerador = valorImovel * taxa * termoPotencia;
         double denominador = termoPotencia - 1;
         return numerador / denominador;
+    }
+    public double calcularTotalPagamento() {
+        double parcela=calcularPagamentoMensal();
+        int prazoFinanciamento=getPrazoFinanciamento();
+        return  parcela*prazoFinanciamento*12;
     }
 }
