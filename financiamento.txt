@@ -1,0 +1,1 @@
+Casa;valor=5000.0;prazo=10;juros=10.0;area=101.0;terreno=200.0;total=7142,36

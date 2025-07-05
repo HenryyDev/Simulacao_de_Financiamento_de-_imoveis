@@ -2,7 +2,7 @@ package util;
 
 public class InterfaceTerreno  extends InterfaceUsuario{
     public String zonaTerreno(){
-    String zona=" ";
+    String zona;
     while (true){
         System.out.println("Digite a zona do terreno (Residencial, Comercial ou Industrial): ");
         zona= scan.nextLine().trim();
